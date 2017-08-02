@@ -1,0 +1,16 @@
+{
+  "name": "mongo-api",
+  "version": "1.0.0",
+  "description": "API to awesome-list Frontend",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ananda Chowdhury",
+  "license": "ISC",
+  "dependencies": {
+	  "express": "*",
+	  "body-parser": "*",
+	  "mongoose": "*"
+  }
+}
