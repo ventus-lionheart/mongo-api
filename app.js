@@ -16,7 +16,7 @@ app.use('/api/users', userRoutes);
 var db;
 
 // Connect to mongoose (Change the URI or localhost path for mongodb as needed)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://achowdhury2015:absolute2895@ds025263.mlab.com:25263/achowdhury-mean-contact', {
+mongoose.connect(process.env.MONGODB_URI || 'Database address go here', {
 	useMongoClient: true
 }, function(err) {
 
