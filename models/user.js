@@ -13,6 +13,9 @@ var userSchema = mongoose.Schema({
 	password: {
 		type: String,
 		required: true
+	},
+	contactList: {
+		type: Array
 	}
 });
 
