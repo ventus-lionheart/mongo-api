@@ -86,4 +86,16 @@ router.get('/:_id/contacts', function(req, res) {
 	});
 });
 
+// GET a User Contact
+router.get('/:_userId/contacts/:_contactId', function(req, res) {
+	var userId = req.params._userId;
+	var contactId = req.params._contactId;
+	Contact.getContactById(contactId, function(err, contact) {
+		if (err) {
+			throw err;
+		}
+		res.status(200).json(contact);
+	});
+});
+
 module.exports = router;
