@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 
 // Require the contact model
 User = require('../models/user');
+Contact = require('../models/contact');
 
 // Use body-parser middleware
 router.use(bodyParser.json());

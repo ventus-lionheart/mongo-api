@@ -44,7 +44,8 @@ module.exports.updateUserById = function(id, user, options, callback) {
 	var update = {
 		name: user.name,
 		email: user.email,
-		password: user.password
+		password: user.password,
+		contactList: user.contactList
 	}
 	User.findOneAndUpdate(query, user, options, callback);
 }
