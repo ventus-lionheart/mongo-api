@@ -31,24 +31,36 @@ router.get('/:_id', function(req, res) {
 // API router to POST a contact
 router.post('/', function(req, res) {
 	var newContact = req.body;
-	Contact.addContact(newContact, function(err, newContact) {
-		if (err) {
-			throw err;
-		}
-		res.status(200).json(newContact);
-	});
+	if (!newContact.name || !newContact.email) {
+		res.status(400).json({
+			"error": "Missing required paramaters"
+		});
+	} else {
+		Contact.addContact(newContact, function(err, newContact) {
+			if (err) {
+				throw err;
+			}
+			res.status(200).json(newContact);
+		});
+	}
 });
 
 // API router to PUT a contact
 router.put('/:_id', function(req, res) {
 	var id = req.params._id;
 	var updateContact = req.body;
-	Contact.updateContactById(id, updateContact, {}, function(err, updateContact) {
-		if (err) {
-			throw err;
-		}
-		res.status(200).json(updateContact);
-	});
+	if (!updateContact.name || !updateContact.email) {
+		res.status(400).json({
+			"error": "Missing required paramaters"
+		});
+	} else {
+		Contact.updateContactById(id, updateContact, {}, function(err, updateContact) {
+			if (err) {
+				throw err;
+			}
+			res.status(200).json(updateContact);
+		});
+	}
 });
 
 // API router to DELETE a contact

@@ -31,24 +31,36 @@ router.get('/:_id', function(req, res) {
 // API router to POST a user
 router.post('/', function(req, res) {
 	var newUser = req.body;
-	User.addUser(newUser, function(err, newUser) {
-		if (err) {
-			throw err;
-		}
-		res.status(200).json(newUser);
-	});
+	if (!newUser.name || !newUser.email || !newUser.password) {
+		res.status(400).json({
+			"error": "Missing required paramaters"
+		});
+	} else {
+		User.addUser(newUser, function(err, newUser) {
+			if (err) {
+				throw err;
+			}
+			res.status(200).json(newUser);
+		});
+	}
 });
 
 // API router to PUT a user
 router.put('/:_id', function(req, res) {
 	var id = req.params._id;
 	var updateUser = req.body;
-	User.updateUserById(id, updateUser, {}, function(err, updateUser) {
-		if (err) {
-			throw err;
-		}
-		res.status(200).json(updateUser);
-	});
+	if (!updateUser.name || !updateUser.email || !updateUser.password) {
+		res.status(400).json({
+			"error": "Missing required paramaters"
+		});
+	} else {
+		User.updateUserById(id, updateUser, {}, function(err, updateUser) {
+			if (err) {
+				throw err;
+			}
+			res.status(200).json(updateUser);
+		});
+	}
 });
 
 // API router to DELETE a user
