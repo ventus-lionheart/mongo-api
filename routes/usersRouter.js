@@ -74,4 +74,15 @@ router.delete('/:_id', function(req, res) {
 	});
 });
 
+// GET User Contact List
+router.get('/:_id/contacts', function(req, res) {
+	var id = req.params._id;
+	User.getUserById(id, function(err, user) {
+		if (err) {
+			throw err;
+		}
+		res.status(200).send(user.contactList);
+	});
+});
+
 module.exports = router;
