@@ -8,13 +8,8 @@ Contact = require('../models/contact');
 // Use body-parser middleware
 router.use(bodyParser.json());
 
-// API home
-router.get('/', function(req, res) {
-	res.send('Use /api/contacts, or /api/contacts/:id');
-});
-
 // API router to GET all contacts
-router.get('/api/contacts', function(req, res) {
+router.get('/', function(req, res) {
 	Contact.getContacts(function(err, contacts) {
 		if (err) {
 			throw err;
@@ -24,7 +19,7 @@ router.get('/api/contacts', function(req, res) {
 });
 
 // API router to GET one contact by id
-router.get('/api/contacts/:_id', function(req, res) {
+router.get('/:_id', function(req, res) {
 	Contact.getContactById(req.params._id, function(err, contact) {
 		if (err) {
 			throw err;
@@ -34,7 +29,7 @@ router.get('/api/contacts/:_id', function(req, res) {
 });
 
 // API router to POST a contact
-router.post('/api/contacts', function(req, res) {
+router.post('/', function(req, res) {
 	var newContact = req.body;
 	Contact.addContact(newContact, function(err, newContact) {
 		if (err) {
@@ -45,7 +40,7 @@ router.post('/api/contacts', function(req, res) {
 });
 
 // API router to PUT a contact
-router.put('/api/contacts/:_id', function(req, res) {
+router.put('/:_id', function(req, res) {
 	var id = req.params._id;
 	var updateContact = req.body;
 	Contact.updateContactById(id, updateContact, {}, function(err, updateContact) {
@@ -57,7 +52,7 @@ router.put('/api/contacts/:_id', function(req, res) {
 });
 
 // API router to DELETE a contact
-router.delete('/api/contacts/:_id', function(req, res) {
+router.delete('/:_id', function(req, res) {
 	var id = req.params._id;
 	Contact.deleteContactById(id, function(err, updateContact) {
 		if (err) {

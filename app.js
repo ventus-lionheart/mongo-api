@@ -1,20 +1,22 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
-const routes = require('./routes/contacts');
+const contactRoutes = require('./routes/contactsRouter');
+const userRoutes = require('./routes/usersRouter');
 const app = express();
 
 // Use body-parser middleware
 app.use(bodyParser.json());
 
 // Use Express Router
-app.use('/', routes);
+app.use('/api/contacts', contactRoutes);
+app.use('/api/users', userRoutes);
 
 // Create database variable outside of the connection
 var db;
 
-// Connect to mongoose (Change the URI and localhost path for mongodb as needed)
-mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/contacts', {
+// Connect to mongoose (Change the URI or localhost path for mongodb as needed)
+mongoose.connect(process.env.MONGODB_URI || 'mongodb://achowdhury2015:absolute2895@ds025263.mlab.com:25263/achowdhury-mean-contact', {
 	useMongoClient: true
 }, function(err) {
 
@@ -33,4 +35,9 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost/contacts', {
 		var port = server.address().port;
 		console.log("App now running on port", port);
 	});
+});
+
+// API home
+app.get('/', function(req, res) {
+	res.send('Use /api/contacts, or /api/users');
 });
