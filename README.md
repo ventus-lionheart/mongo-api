@@ -30,23 +30,23 @@ To start the app, navigate to the root folder of the app and `npm install`, then
 	});
 
 ## Contact Schema
-		var contactSchema = mongoose.Schema({
-			name: {
-				type: String,
-				required: true
-			},
-			email: {
-				type: String,
-				required: true
-			},
-			phone: {
-				type: {
-					mobile: {
-						type: String
-					},
-					work: {
-						type: String
-					}
+	var contactSchema = mongoose.Schema({
+		name: {
+			type: String,
+			required: true
+		},
+		email: {
+			type: String,
+			required: true
+		},
+		phone: {
+			type: {
+				mobile: {
+					type: String
+				},
+				work: {
+					type: String
 				}
 			}
-		});
+		}
+	});
