@@ -2,8 +2,8 @@
 REST api using node, express, mongodb, and mongoose. Uses a User Schema, and a Contact Schema. MongoDb Database URI must be provided in app.js. 
 
 ## API Routes
-``app.use('/api/contacts', contactRoutes); <br>
-app.use('/api/users', userRoutes); <br>`` 
+	app.use('/api/contacts', contactRoutes);
+	app.use('/api/users', userRoutes);
 Please refer to the corresponding .js files under `routes` for full api paths. 
 
 ## Start
